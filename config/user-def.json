@@ -1,0 +1,13 @@
+{
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "eduardo.asenjo@pexlify.com",
+    "Alias": "tester1",
+    "TimeZoneSidKey": "Europe/London",
+    "LocaleSidKey": "en_US",
+    "EmailEncodingKey": "UTF-8",
+    "LanguageLocaleKey": "en_US",
+    "profileName": "System Administrator",
+    "permsets": ["Geolocation"],
+    "generatePassword": true
+}
