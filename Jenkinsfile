@@ -59,14 +59,14 @@ pipeline {
                         }
                         */
                         echo "3. Pushing changes to Scratch Org"
-                        def pushResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:source:push -u QA_TestPR-7 -f"
+                        def pushResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:source:push -u MyTestOrgPR-3 -f"
                         if (pushResult != 0) {
                             error "Push failed"
                         } else {
                             echo "Metadata successfully pushed to the Org ${SCRATCH_ORG_NAME}"
                         }
 
-                        def permissionResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:user:permset:assign -n ${PERMISSION_SET} -u QA_TestPR-7"
+                        def permissionResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:user:permset:assign -n ${PERMISSION_SET} -u MyTestOrgPR-3"
                         if (permissionResult != 0) {
                             error "Permission Set Assignment failed"
                         } else {
@@ -76,7 +76,7 @@ pipeline {
                         echo "4. Running all tests"
                         sh "mkdir -p tests/${SCRATCH_ORG_NAME}"
                         timeout(time: 10, unit: "MINUTES") {
-                            def testsResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:apex:test:run -l RunLocalTests -d tests/${SCRATCH_ORG_NAME} -r tap -u QA_TestPR-7"
+                            def testsResult = sh returnStatus: true, script: "${SFDX_HOME}/sfdx force:apex:test:run -l RunLocalTests -d tests/${SCRATCH_ORG_NAME} -r tap -u MyTestOrgPR-3"
                             if (testsResult != 0) {
                                 error "Apex tests run failed"
                             } else {
