@@ -3,7 +3,7 @@ pipeline {
     agent any
     environment {
         PROJECT_SCRATCH_PATH = "./config/project-scratch-def.json"
-        SCRATCH_ORG_NAME     = "Test"
+        SCRATCH_ORG_NAME     = "MyTestOrg"
         PERMISSION_SET       = "Geolocation"
 
         SERIAL  = System.currentTimeMillis()
